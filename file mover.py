@@ -55,14 +55,8 @@ def check_files(directories:list, ex_rp:list):
         file_name = os.path.splitext(os.path.basename(full_path))[0]
         print("Checking file: " + file_name + " at path:" + full_path)
         if (os.path.isfile(full_path) and not os.path.exists(new_path)) or (os.path.isfile(full_path) and file_name in ex_rp[1]):
-            if file_name not in ex_rp[1]:
-                print("File " + file_name + " to be moved to destination...")
-                add_files(full_path, new_path, file_name, ex_rp)
-            else:
-                rep = input("Do you want to replace this file? (Y or N): ")
-                if rep == "Y" or rep == "y" or rep == "Yes" or rep == "yes":
-                    print("File " + file_name + " to be moved to destination...")
-                    add_files(full_path, new_path, file_name, ex_rp)
+            print("File " + file_name + " to be moved to destination...")
+            add_files(full_path, new_path, file_name, ex_rp)
         elif os.path.isdir(full_path) and not os.path.exists(new_path):
             print("The folder at directory " + new_path + " does not exist.")
             add_folder = input("Would you like to add this folder to the destination? (Y or N)")
